@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India TV — Sample Concept</title>
+<meta name="description" content="Sample concept website for a fictional India TV news brand. All content is placeholder text.">
+<style>
+@font-face{font-family:'Poppins';src:url('poppins-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Poppins';src:url('poppins-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Poppins';src:url('poppins-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Poppins';src:url('poppins-800.woff2') format('woff2');font-weight:800;font-display:swap}
+:root{
+  --navy:#0d1730; --navy2:#182650; --card:#141f42; --card2:#1a2952;
+  --ink:#eef1fa; --muted:#8ea0c8; --line:rgba(255,255,255,.09);
+  --saffron:#ff9933; --green:#2aa72a; --white:#f5f6fa;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* sample ribbon */
+.sample-pill{position:fixed;right:16px;bottom:16px;z-index:99;background:linear-gradient(90deg,var(--saffron),#ffb35c);color:#231303;font-weight:700;font-size:12px;letter-spacing:.14em;padding:8px 16px;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.45)}
+
+/* top utility bar */
+.topbar{background:#0a1226;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+.topbar .note{color:var(--saffron);font-weight:600;letter-spacing:.06em}
+
+/* ticker */
+.ticker{background:#101c3d;border-bottom:1px solid var(--line);display:flex;align-items:stretch;overflow:hidden}
+.ticker .label{background:linear-gradient(90deg,var(--saffron),#ff8a1e);color:#231303;font-weight:800;font-size:12px;letter-spacing:.16em;display:flex;align-items:center;padding:0 18px;flex:0 0 auto}
+.ticker .rail{overflow:hidden;flex:1;display:flex;align-items:center}
+.ticker .track{display:flex;gap:56px;white-space:nowrap;animation:tick 28s linear infinite;font-size:13.5px;color:#c7d2ee}
+.ticker .track span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:10px;vertical-align:1px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(13,23,48,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:28px;height:76px}
+.logo{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+nav.main{display:flex;gap:4px;margin-left:8px}
+nav.main a{font-size:14px;font-weight:600;color:#c7d2ee;padding:9px 13px;border-radius:8px}
+nav.main a:hover,nav.main a.active{color:#fff;background:rgba(255,255,255,.07)}
+nav.main a.active{box-shadow:inset 0 -2px 0 var(--saffron)}
+.head-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.live-btn{display:flex;align-items:center;gap:8px;background:rgba(255,60,60,.12);border:1px solid rgba(255,90,90,.4);color:#ff9a9a;font-weight:700;font-size:12.5px;letter-spacing:.12em;padding:8px 16px;border-radius:999px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#ff5252;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,82,82,.6)}50%{box-shadow:0 0 0 6px rgba(255,82,82,0)}}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:#dfe6f7;margin:4px auto;border-radius:2px}
+
+/* hero */
+.hero{padding:34px 0 10px}
+.hero-grid{display:grid;grid-template-columns:1.9fr 1fr;gap:22px}
+.feature{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:460px;display:flex;align-items:flex-end}
+.feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feature .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,36,.05) 30%,rgba(10,16,36,.88) 82%)}
+.img-tag{position:absolute;top:14px;right:14px;z-index:2;background:rgba(10,16,36,.85);border:1px solid rgba(255,255,255,.25);color:#c8d4eb;font-size:11px;font-weight:700;letter-spacing:.12em;padding:6px 12px;border-radius:8px}
+.feature .body{position:relative;padding:30px}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--saffron);color:#231303;margin-bottom:14px}
+.chip.green{background:var(--green);color:#04180a}
+.chip.blue{background:#5a8cff;color:#0a1330}
+.chip.violet{background:#b07cff;color:#190b33}
+.chip.rose{background:#ff7d9c;color:#33091a}
+.chip.teal{background:#4fd6c8;color:#052523}
+.feature h1{font-size:34px;font-weight:800;line-height:1.22;letter-spacing:-.01em;max-width:16em}
+.feature p{color:#c7d2ee;margin-top:12px;max-width:34em;font-size:15px}
+.meta{display:flex;gap:16px;margin-top:16px;font-size:12.5px;color:var(--muted)}
+.side-stack{display:flex;flex-direction:column;gap:16px}
+.side-item{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;align-items:center}
+.side-item img{width:118px;height:82px;object-fit:cover;border-radius:10px;flex:0 0 auto}
+.side-item h3{font-size:14.5px;font-weight:600;line-height:1.35}
+.side-item .cat{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--saffron);display:block;margin-bottom:5px}
+
+/* sections */
+section{padding:44px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}
+.sec-head h2{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.sec-head .bar{width:54px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--saffron),var(--white),var(--green))}
+.sec-head .more{margin-left:auto;font-size:13px;color:var(--muted);font-weight:600}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .18s ease,border-color .18s ease}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.2)}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.card .body{padding:18px 18px 20px}
+.card h3{font-size:16.5px;font-weight:700;line-height:1.35;margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--muted)}
+.card .meta{margin-top:12px}
+
+/* watch band */
+.watch{background:linear-gradient(160deg,#0a1226,#12204a);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:44px}
+.watch .inner{padding:48px 0 52px}
+.vid{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.vid img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.vid .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vid .play .btn{width:58px;height:58px;border-radius:50%;background:rgba(10,16,36,.72);border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center}
+.vid .play svg{margin-left:4px}
+.vid .dur{position:absolute;right:10px;bottom:10px;background:rgba(10,16,36,.85);font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:6px;color:#dfe6f7}
+.vid-title{margin-top:12px;font-size:14.5px;font-weight:600}
+
+/* topics */
+.topics{display:flex;flex-wrap:wrap;gap:12px}
+.topics a{border:1px solid var(--line);background:var(--card);padding:10px 18px;border-radius:999px;font-size:13.5px;font-weight:600;color:#c7d2ee}
+.topics a:hover{border-color:var(--saffron);color:#fff}
+
+/* newsletter */
+.news-band{margin:48px 0 0;background:linear-gradient(120deg,#182650,#0d1733 60%),var(--navy);border:1px solid var(--line);border-radius:22px;padding:40px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;position:relative;overflow:hidden}
+.news-band::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,51,.22),transparent 70%)}
+.news-band h2{font-size:24px;font-weight:800}
+.news-band p{color:var(--muted);font-size:14px;margin-top:6px;max-width:36em}
+.news-form{display:flex;gap:10px;margin-left:auto;position:relative;z-index:1}
+.news-form input{background:#0a1226;border:1px solid var(--line);border-radius:12px;padding:13px 16px;color:var(--ink);font-family:inherit;font-size:14px;width:260px;outline:none}
+.news-form input:focus{border-color:var(--saffron)}
+.news-form button{background:linear-gradient(90deg,var(--saffron),#ff8a1e);border:none;color:#231303;font-family:inherit;font-weight:700;font-size:14px;padding:13px 22px;border-radius:12px;cursor:pointer}
+.news-note{width:100%;font-size:12px;color:var(--muted);margin-left:auto;text-align:right;position:relative;z-index:1}
+
+/* footer */
+footer{margin-top:56px;background:#0a1226;border-top:1px solid var(--line)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;padding:44px 0 30px}
+.foot-grid h4{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.foot-grid a{display:block;font-size:13.5px;color:#c7d2ee;padding:4px 0}
+.foot-grid p{font-size:13px;color:var(--muted);margin-top:12px;max-width:30em}
+.disclaimer{border-top:1px solid var(--line);padding:18px 0 22px;font-size:12px;color:#6f81ab}
+.tricolor-strip{height:5px;background:linear-gradient(90deg,var(--saffron) 0%,var(--white) 50%,var(--green) 100%)}
+
+@media (max-width:900px){
+  nav.main{display:none;position:absolute;top:76px;left:0;right:0;background:#0d1730;border-bottom:1px solid var(--line);flex-direction:column;padding:10px 18px 18px;gap:2px}
+  nav.main.open{display:flex}
+  .burger{display:block}
+  .hero-grid{grid-template-columns:1fr}
+  .feature{min-height:380px}
+  .feature h1{font-size:26px}
+  .grid3{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .news-form{margin-left:0;width:100%}
+  .news-note{text-align:left;margin-left:0}
+}
+@media (max-width:560px){
+  .grid3{grid-template-columns:1fr}
+  .news-form{flex-wrap:wrap}
+  .news-form input{flex:1 1 180px;min-width:0;width:auto}
+  .news-form button{flex:0 0 auto}
+  .topbar .wrap{font-size:11px}
+  .feature h1{font-size:22px}
+  .live-btn{display:none}
+  header .wrap{height:66px}
+  nav.main{top:66px}
+}
+</style>
+</head>
+<body>
+
+<div class="sample-pill">SAMPLE CONCEPT</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span id="today">Saturday, 14 November 2026</span>
+    <span class="note">DEMO SITE &middot; ALL CONTENT IS PLACEHOLDER</span>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="label">SAMPLE WIRE</div>
+  <div class="rail"><div class="track" id="tickerTrack">
+    <span>Sample headline: placeholder breaking story one</span>
+    <span>Sample headline: placeholder breaking story two</span>
+    <span>Sample headline: placeholder breaking story three</span>
+    <span>Sample headline: placeholder breaking story four</span>
+  </div></div>
+</div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="India TV home">
+      <svg width="196" height="46" viewBox="0 0 392 92" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="India TV sample logo">
+        <defs>
+          <linearGradient id="lgNav" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2a3a73"/><stop offset="1" stop-color="#0d1733"/>
+          </linearGradient>
+          <clipPath id="triClip"><path d="M32 24 L32 68 L72 46 Z"/></clipPath>
+        </defs>
+        <rect x="2" y="2" width="88" height="88" rx="20" fill="url(#lgNav)" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+        <g clip-path="url(#triClip)">
+          <rect x="32" y="24" width="44" height="15" fill="#ff9933"/>
+          <rect x="32" y="39" width="44" height="15" fill="#f5f6fa"/>
+          <rect x="32" y="54" width="44" height="16" fill="#138808"/>
+        </g>
+        <text x="106" y="66" font-family="Poppins, sans-serif" font-weight="800" font-size="52" fill="#f5f6fa" letter-spacing="1">INDIA</text>
+        <rect x="268" y="14" width="118" height="64" rx="32" fill="#f5f6fa"/>
+        <text x="327" y="62" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="800" font-size="42" fill="#14224d">TV</text>
+      </svg>
+    </a>
+    <nav class="main" id="mainNav">
+      <a href="#" class="active">Home</a>
+      <a href="#">National</a>
+      <a href="#">Business</a>
+      <a href="#">Sports</a>
+      <a href="#">Tech</a>
+      <a href="#">Entertainment</a>
+    </nav>
+    <div class="head-right">
+      <span class="live-btn"><span class="live-dot"></span>LIVE</span>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="hero-grid">
+      <article class="feature">
+        <img src="hero.jpg" alt="Sample hero image">
+        <span class="img-tag">SAMPLE IMAGE</span>
+        <div class="shade"></div>
+        <div class="body">
+          <span class="chip">Sample &middot; Top Story</span>
+          <h1>Sample Lead Story: A Placeholder Headline Sits Here for the Homepage Hero</h1>
+          <p>This is placeholder summary copy for the sample concept. A real story summary of one or two sentences would appear in this space on a live site.</p>
+          <div class="meta"><span>Sample Desk</span><span>&middot;</span><span>2 hours ago</span><span>&middot;</span><span>4 min read</span></div>
+        </div>
+      </article>
+      <div class="side-stack">
+        <a class="side-item" href="#"><img src="side-national.jpg" alt="Sample"><div><span class="cat">National</span><h3>Sample story title for a national news item goes here</h3></div></a>
+        <a class="side-item" href="#"><img src="side-business.jpg" alt="Sample"><div><span class="cat">Business</span><h3>Sample story title for a markets or business update</h3></div></a>
+        <a class="side-item" href="#"><img src="side-sports.jpg" alt="Sample"><div><span class="cat">Sports</span><h3>Sample story title for a sports result or preview</h3></div></a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><h2>Latest News</h2><span class="bar"></span><a class="more" href="#">View all &rarr;</a></div>
+    <div class="grid3">
+      <a class="card" href="#"><img src="card-national.jpg" alt="Sample"><div class="body"><span class="chip green">National</span><h3>Sample headline: placeholder national story title number one</h3><p>Placeholder excerpt text. Two short lines of summary would live here on the real site.</p><div class="meta"><span>Sample Desk</span><span>1h ago</span></div></div></a>
+      <a class="card" href="#"><img src="card-business.jpg" alt="Sample"><div class="body"><span class="chip blue">Business</span><h3>Sample headline: placeholder business story title number two</h3><p>Placeholder excerpt text. Two short lines of summary would live here on the real site.</p><div class="meta"><span>Sample Desk</span><span>2h ago</span></div></div></a>
+      <a class="card" href="#"><img src="card-sports.jpg" alt="Sample"><div class="body"><span class="chip">Sports</span><h3>Sample headline: placeholder sports story title number three</h3><p>Placeholder excerpt text. Two short lines of summary would live here on the real site.</p><div class="meta"><span>Sample Desk</span><span>3h ago</span></div></div></a>
+      <a class="card" href="#"><img src="card-tech.jpg" alt="Sample"><div class="body"><span class="chip violet">Tech</span><h3>Sample headline: placeholder technology story title number four</h3><p>Placeholder excerpt text. Two short lines of summary would live here on the real site.</p><div class="meta"><span>Sample Desk</span><span>4h ago</span></div></div></a>
+      <a class="card" href="#"><img src="card-ent.jpg" alt="Sample"><div class="body"><span class="chip rose">Entertainment</span><h3>Sample headline: placeholder entertainment story number five</h3><p>Placeholder excerpt text. Two short lines of summary would live here on the real site.</p><div class="meta"><span>Sample Desk</span><span>5h ago</span></div></div></a>
+      <a class="card" href="#"><img src="card-city.jpg" alt="Sample"><div class="body"><span class="chip teal">City</span><h3>Sample headline: placeholder city story title number six</h3><p>Placeholder excerpt text. Two short lines of summary would live here on the real site.</p><div class="meta"><span>Sample Desk</span><span>6h ago</span></div></div></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Trending Topics</h2><span class="bar"></span></div>
+    <div class="topics">
+      <a href="#"># SampleTopic</a><a href="#"># PlaceholderNews</a><a href="#"># DemoStory</a><a href="#"># SampleSports</a><a href="#"># PlaceholderTech</a><a href="#"># DemoCity</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="news-band">
+      <div>
+        <h2>Get the sample briefing</h2>
+        <p>A daily newsletter box would sit here. This form is decorative for the concept demo and does not send or store anything.</p>
+      </div>
+      <form class="news-form" id="newsForm">
+        <input type="email" placeholder="you@example.com" aria-label="Email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="news-note" id="newsNote">Demo only &middot; no data leaves this page</div>
+    </div>
+  </section>
+
+</main>
+
+<div class="watch">
+  <div class="wrap inner">
+    <div class="sec-head"><h2>Watch</h2><span class="bar"></span><a class="more" href="#">All videos &rarr;</a></div>
+    <div class="grid3">
+      <div>
+        <div class="vid"><img src="video1.jpg" alt="Sample video thumbnail"><div class="play"><div class="btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff9933"><path d="M6 3l16 9-16 9z"/></svg></div></div><span class="dur">12:34</span></div>
+        <div class="vid-title">Sample Bulletin &middot; Placeholder Evening News Segment</div>
+      </div>
+      <div>
+        <div class="vid"><img src="video2.jpg" alt="Sample video thumbnail"><div class="play"><div class="btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff9933"><path d="M6 3l16 9-16 9z"/></svg></div></div><span class="dur">08:10</span></div>
+        <div class="vid-title">Sample Interview &middot; Placeholder Guest Conversation</div>
+      </div>
+      <div>
+        <div class="vid"><img src="video3.jpg" alt="Sample video thumbnail"><div class="play"><div class="btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#ff9933"><path d="M6 3l16 9-16 9z"/></svg></div></div><span class="dur">05:47</span></div>
+        <div class="vid-title">Sample Explainer &middot; Placeholder Topic in Five Minutes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <svg width="150" height="35" viewBox="0 0 392 92" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="88" height="88" rx="20" fill="#182650" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+          <g clip-path="url(#triClip)"><rect x="32" y="24" width="44" height="15" fill="#ff9933"/><rect x="32" y="39" width="44" height="15" fill="#f5f6fa"/><rect x="32" y="54" width="44" height="16" fill="#138808"/></g>
+          <text x="106" y="66" font-family="Poppins, sans-serif" font-weight="800" font-size="52" fill="#f5f6fa" letter-spacing="1">INDIA</text>
+          <rect x="268" y="14" width="118" height="64" rx="32" fill="#f5f6fa"/>
+          <text x="327" y="62" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="800" font-size="42" fill="#14224d">TV</text>
+        </svg>
+        <p>News for every Indian. This is a design concept with sample content only.</p>
+      </div>
+      <div><h4>Sections</h4><a href="#">National</a><a href="#">Business</a><a href="#">Sports</a><a href="#">Tech</a><a href="#">Entertainment</a></div>
+      <div><h4>Company</h4><a href="#">About (sample)</a><a href="#">Careers (sample)</a><a href="#">Advertise (sample)</a><a href="#">Contact (sample)</a></div>
+      <div><h4>Legal</h4><a href="#">Privacy (sample)</a><a href="#">Terms (sample)</a><a href="#">Corrections (sample)</a></div>
+    </div>
+    <div class="disclaimer">Sample concept website. India TV here is a fictional sample brand and is not affiliated with any real channel or company. Every headline, story, image, video and link on this page is a placeholder for layout demonstration only. &copy; 2026 Sample Concept.</div>
+  </div>
+  <div class="tricolor-strip"></div>
+</footer>
+
+<script>
+document.getElementById('burger').addEventListener('click',function(){
+  document.getElementById('mainNav').classList.toggle('open');
+});
+document.getElementById('newsForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('newsNote').textContent='Sample only — nothing was subscribed or sent.';
+});
+// duplicate ticker content for seamless loop
+var t=document.getElementById('tickerTrack');t.innerHTML+=t.innerHTML;
+// live date
+var d=new Date();
+var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+document.getElementById('today').textContent=days[d.getDay()]+', '+d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
+</script>
+</body>
+</html>
